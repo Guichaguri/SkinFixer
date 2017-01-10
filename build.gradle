@@ -1,0 +1,31 @@
+group 'guichaguri.skinfixer'
+version '1.0.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "mojang"
+        url = "https://libraries.minecraft.net/"
+    }
+}
+
+dependencies {
+    compile 'org.ow2.asm:asm-debug-all:5.1'
+    compile 'net.minecraft:launchwrapper:1.11'
+    compile 'com.google.code.gson:gson:2.8.0'
+}
+
+jar {
+    manifest {
+        attributes  'TweakClass': 'guichaguri.skinfixer.SkinFixer',
+                    'TweakOrder': '150',
+                    'TweakName': 'SkinFixer',
+                    'TweakAuthor': 'Guichaguri',
+                    'TweakVersion': project.version,
+                    'Main-Class': 'guichaguri.skinfixer.SkinInstaller'
+    }
+}
